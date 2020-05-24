@@ -3,12 +3,9 @@
 FROM ubuntu:18.04
 
 # 패키지 설치
-RUN \
-  apt update -y && apt upgrade -y
+RUN apt update -y && apt upgrade -y
 
-RUN \
-  apt install -y vim git unzip sendmail software-properties-common build-essential \
-  rm -rf /var/lib/apt/lists/*
+RUN apt install -y vim git unzip sendmail software-properties-common build-essential
 
 # qwerty
 RUN echo 'LANG="en_US.UTF-8"' > /etc/default/locale
@@ -23,17 +20,18 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 
 # hostname 설정 및 적용
 RUN echo 'localhost' > /etc/hostname
-RUN hostname -F /etc/hostname
+# RUN hostname -F /etc/hostname
+
 # myserver1 서버네임
 RUN echo '127.0.0.1    myserver1' >> /etc/hosts
-RUN sed -i "s/preserve_hostname: false/preserve_hostname: true/i" /etc/cloud/cloud.cfg
-# RUN sed "s/preserve_hostname: false/preserve_hostname: true" >> /etc/cloud/cloud.cfg
+# RUN sed -i "s/preserve_hostname: false/preserve_hostname: true/i" /etc/cloud/cloud.cfg
+
 
 # 메일 호스트네임 설정
 RUN echo "localhost" > /etc/mail/local-host-names
 
 # 아파치 설치
-RUN apt install -y apache2 --Geographic area=6 --Time zone=69
+RUN apt install -y apache2
 RUN apt install ssl-cert certbot
 RUN a2enmod rewrite
 RUN a2enmod headers
