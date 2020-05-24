@@ -11,9 +11,9 @@ RUN apt install -y vim git unzip sendmail software-properties-common build-essen
 RUN echo 'LANG="en_US.UTF-8"' > /etc/default/locale
 
 # APT server > 카카오 
-RUN echo 'deb http://mirror.kakao.com/ubuntu bionic main restricted universe multiverse' > /etc/apt/sources.list
-RUN echo 'deb http://mirror.kakao.com/ubuntu bionic-updates main restricted universe multiverse' >> /etc/apt/sources.list
-RUN echo 'deb http://security.ubuntu.com/ubuntu bionic-security main restricted universe multiverse' >> /etc/apt/sources.list
+# RUN echo 'deb http://mirror.kakao.com/ubuntu bionic main restricted universe multiverse' > /etc/apt/sources.list
+# RUN echo 'deb http://mirror.kakao.com/ubuntu bionic-updates main restricted universe multiverse' >> /etc/apt/sources.list
+# RUN echo 'deb http://security.ubuntu.com/ubuntu bionic-security main restricted universe multiverse' >> /etc/apt/sources.list
 
 # 서울로 시간 변경
 RUN ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
